@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@Entity
 public class Exchange extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -9,10 +9,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/exchange")
@@ -28,5 +27,11 @@ public class ExchangeController {
         return ResponseEntity.ok(exchange);
     }
 
+    //환전 내역 조회
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Exchange>> getExchagreList(@PathVariable Long userId){
+        List<Exchange>exchangesList = exchangeService.getAllExchangeByUerId(userId);
+        return ResponseEntity.ok(exchangesList) ;
+    }
 
 }

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class ExchangeService {
@@ -39,5 +40,11 @@ public class ExchangeService {
         entityManager.persist(exchange);
 
         return exchange;
+    }
+
+
+    public List<Exchange> getAllExchangeByUerId(Long userId){
+        String jpql = "SELECT e FROM Exchange e WHERE e.user.id = :userId";
+        return entityManager.createQuery(jpql,Exchange.class).setParameter("userId",userId).getResultList();
     }
 }
