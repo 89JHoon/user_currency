@@ -17,14 +17,12 @@ API 명세서
 ---
 > 일정 관리 앱  API 설계
 
-|     기능      | Method | URL | request | response | 상태코드 |
-|:-----------:|:-----:|----|-----|------|------|
-|    환전 요청    |GET   |./calender           |요청 body          |다건 응답 정보|200 정상조회    |
-| 선택 고객 환전 조회 |GET   |./clender/{id}        |요청 param         |단건 응답 정보|200 정상조회 / 400 Bad Request("없는 일정입니다." |
-| 환전 요청 상태 수정 |POST  |./calender           |요청 body          |등록 정보    |200 정상등록   |
-|    고객 삭제    |DELETE|./calender{id}       |요청 param 요청 body|수정 정보    |200 정상삭제 / 404 Not Fount   |
-|    일정 수정    |PUT   |./calender{id}       |요청 param         |삭제 정보    |200 정상수정/등록|
-
+|     기능      | Method | URL                  | request | response | 상태코드                           |
+|:-----------:|:------:|----------------------|-----|----------|--------------------------------|
+|    환전 요청    |  POST  | ./exchange           |요청 body          | 등록 정보    | 200 정상조회                       |
+| 선택 고객 환전 조회 |  GET   | ./exchange/{id}      |요청 param         | 다건 응답 정보 | 200 정상조회 / 400 Bad Request("") |
+| 환전 요청 상태 수정 |  PUT   | .exchange/{requestId}/cancel |요청 body          | 수정 정보    | 200 정상등록                       |
+|    고객 삭제    | DELETE | ./users/{user_id}    |요청 param | -        | 200 정상삭제 / 404 Not Fount       |
 ERD
 ---
 ![img.png](img.png)

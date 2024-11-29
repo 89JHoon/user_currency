@@ -35,7 +35,7 @@ public class ExchangeController {
     }
 
     // 환전 요청 상태를 취소
-    @PostMapping("/{requestId}/cancel")
+    @PutMapping("/{requestId}/cancel")
     public ResponseEntity<Exchange> exchangeCancel(@PathVariable Long requestId){
         Exchange exchange = exchangeService.exchangeCancel(requestId);
         return ResponseEntity.ok(exchange);
