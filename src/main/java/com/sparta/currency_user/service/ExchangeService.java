@@ -47,4 +47,12 @@ public class ExchangeService {
         String jpql = "SELECT e FROM Exchange e WHERE e.user.id = :userId";
         return entityManager.createQuery(jpql,Exchange.class).setParameter("userId",userId).getResultList();
     }
+
+    public Exchange exchangeCancel(Long requestId ){
+        Exchange exchange = entityManager.createQuery("SELECT e FROM Exchange e WHERE e.id=:requestId",Exchange.class).setParameter("requestId",requestId).getSingleResult();
+        exchange.setStatus(("canceled"));
+        exchange.setModifiedAt(LocalDateTime.now());
+        entityManager.persist(exchange);
+        return exchange;
+    }
 }
